@@ -8,9 +8,12 @@ package:
 source:
   - url: https://pypi.org/packages/source/c/colbert-ai/colbert_ai-${{ version }}.tar.gz
     sha256: a8d6fdb4e2272f2b08ed37f8e5096072160d8415d1e40585751898b77e625bab
+    patches:
+      - 0000-patch-wrong-gitpython.patch  # https://github.com/stanford-futuredata/ColBERT/pull/388
+      - 0001-remove-python-ninja.patch
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
 
@@ -38,7 +41,7 @@ tests:
       python_version: ${{ python_min }}.*
       imports:
         - colbert
-      pip_check: false
+      pip_check: true
 
 about:
   homepage: https://github.com/stanford-futuredata/ColBERT
