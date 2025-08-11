@@ -1,5 +1,5 @@
 context:
-  version: 0.2.21
+  version: "0.2.22"
 
 package:
   name: colbert-ai
@@ -7,13 +7,13 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/c/colbert-ai/colbert_ai-${{ version }}.tar.gz
-    sha256: a8d6fdb4e2272f2b08ed37f8e5096072160d8415d1e40585751898b77e625bab
+    sha256: 00afcfef5d715f0d3a706be90d2b5b74a2bb7c402073807ceb5515c0026a8886
     patches:
       - 0000-patch-wrong-gitpython.patch  # https://github.com/stanford-futuredata/ColBERT/pull/388
       - 0001-remove-python-ninja.patch
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
 
